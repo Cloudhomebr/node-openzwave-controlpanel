@@ -1,0 +1,23 @@
+{
+    "controllerDevice": {
+        "title": "Controlador Z-wave",
+        "selectTitle": "Controlador"
+    },
+    "networkDevice": {
+        "title": "Rede Z-wave",
+        "inputTXTHomeID": "Home ID"
+    },
+    "devicesTitle": {
+        "devices": "Dispositivos Zwave",
+        "nodeID": "Node ID",
+        "deviceType": "Tipo Básico",
+        "description": "Descrição",
+        "name": "Nome",
+        "room": "Ambiente",
+        "value": "Valor",
+        "lastUpdate": "Ult. Atulização",
+        "status": "Status",
+        "execute": "Executar",
+        "options": "Opções"
+    }
+}

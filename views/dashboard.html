@@ -1,0 +1,141 @@
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+    <div class="container">
+        <h3>NOZWCP - Node OpenZwave ControlPanel</h3>
+    </div>
+</div>
+
+<div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading">{{ 'controllerDevice.title' | translate}}</div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            {{ 'controllerDevice.selectTitle' | translate}}
+                        </div>
+                        <div class="col-md-8">
+                            <select class="form-control" id="optionNode" name="optionNode">
+                                <option value="tty/cu.serial">Aeonlabs USB</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-md-4">
+                            
+                        </div>
+                        <div class="col-md-8">
+                            <button type="button" class="btn btn-primary btn-sm">Iniciar</button>
+                        </div>
+                    </div>    
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading">{{ 'networkDevice.title' | translate}}</div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            {{ 'networkDevice.inputTXTHomeID' | translate }}
+                        </div>
+                        <div class="col-md-8">
+                            <div class="input-group">
+                                <span class="input-group-addon glyphicon glyphicon-signal"></span>
+                                <input type="text" class="form-control" placeholder="HomeID" aria-describedby="basic-addon1">
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading">Backup</div>
+                <div class="panel-body">
+                    <p>...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-12">
+                <h3 class="text-center">
+                    {{'devicesTitle.devices' | translate}}
+                </h3>
+            </div>
+            <div id="no-more-tables">
+                <table class="col-md-12 table-bordered table-striped table-condensed cf">
+                    <thead class="cf">
+                        <tr>
+                            <th>{{'devicesTitle.nodeID' | translate}}</th>
+                            <th>{{'devicesTitle.deviceType' | translate}}</th>
+                            <th>{{'devicesTitle.description' | translate}}</th>
+                            <th>{{'devicesTitle.name' | translate}}</th>
+                            <th>{{'devicesTitle.room' | translate}}</th>
+                            <th>{{'devicesTitle.value' | translate}}</th>
+                            <th>{{'devicesTitle.lastUpdate' | translate}}</th>
+                            <th>{{'devicesTitle.execute' | translate}}</th>
+                            <th>{{'devicesTitle.options' | translate}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-title="{{'devicesTitle.nodeID' | translate}}">1</td>
+                            <td data-title="{{'devicesTitle.deviceType' | translate}}">1</td>
+                            <td data-title="{{'devicesTitle.description' | translate}}">1</td>
+                            <td data-title="{{'devicesTitle.name' | translate}}">1</td>
+                            <td data-title="{{'devicesTitle.room' | translate}}">1</td>
+                            <td data-title="{{'devicesTitle.value' | translate}}">1</td>
+                            <td data-title="{{'devicesTitle.lastUpdate' | translate}}">1</td>
+                            <td data-title="{{'devicesTitle.execute' | translate}}">
+                                <switch id="enabled" name="enabled" ng-model="enabled" class="green"></switch>
+                            </td>
+                            <td data-title="{{'devicesTitle.options' | translate}}">
+                                <select class="form-control" id="optionNode" name="optionNode">
+                                    <option value="">--</option>
+                                    <option value="rename">Renomear</option>
+                                    <option value="delete">Remove</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-title="{{'devicesTitle.nodeID' | translate}}">1</td>
+                            <td data-title="{{'devicesTitle.deviceType' | translate}}">1</td>
+                            <td data-title="{{'devicesTitle.description' | translate}}">1</td>
+                            <td data-title="{{'devicesTitle.name' | translate}}">1</td>
+                            <td data-title="{{'devicesTitle.room' | translate}}">1</td>
+                            <td data-title="{{'devicesTitle.value' | translate}}">1</td>
+                            <td data-title="{{'devicesTitle.lastUpdate' | translate}}">1</td>
+                            <td data-title="{{'devicesTitle.execute' | translate}}">
+                                <switch id="enabled" name="enabled" ng-model="enabled" class="green"></switch>
+                            </td>
+                            <td data-title="{{'devicesTitle.options' | translate}}">
+                                <select class="form-control" id="optionNode" name="optionNode">
+                                    <option value="">--</option>
+                                    <option value="rename">Renomear</option>
+                                    <option value="delete">Remove</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+
+    <hr>
+    <footer>
+        <p>&copy; CloudHome Tecnologia 2015</p>
+    </footer>
+</div> <!-- /container -->
+

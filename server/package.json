@@ -1,0 +1,32 @@
+{
+    "name": "node-openzwave-controlpane",
+    "version": "0.0.1",
+    "description": "(en)Control panel for z-wave devices. (pt-BR) Painel de controle de dispositivos Z-wave, semelhante ao projeto openzwave-control-panel",
+    "dependencies": {
+        "socket.io" : "latest",
+        "express" : "latest",
+        "sequelize" : "latest",
+        "mysql" : "latest",
+        "socketio-jwt": "latest",
+        "jsonwebtoken": "latest",
+        "body-parser": "latest",
+        "ip": "latest",
+        "openzwave-shared": "latest"
+    },
+    "author" : {
+        "name" : "Joao Henrique Bellincanta Gomes <joao@cloudhome.com.br>",
+        "url" : "http://www.cloudhome.io"
+    },
+    "keywords" : [ "zwave", "home automation", "nodejs-zwave", "domotica" ],
+    "repository" : {
+        "type" : "git",
+        "url" : "git://github.com/Cloudhomebr/node-openzwave-controlpanel.git"
+    },
+    "bugs" : {
+        "url" : "https://github.com/Cloudhomebr/node-openzwave-controlpanel/issues"
+    },
+    "homepage" : "https://github.com/Cloudhomebr/node-openzwave-controlpanel/blob/master/README.md",
+    "scripts" : {
+        "start": "node server/server.js"
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "menu.language": "Language"
+    ,"devicesTitle": {
+        "nodeID": "Node ID",
+        "deviceType": "BasicType",
+        "description": "Description",
+        "name": "Name",
+        "room": "Room",
+        "value": "Value",
+        "lastUpdate": "Last Update",
+        "status": "Status",
+        "options": "Options"
+    }
+}
