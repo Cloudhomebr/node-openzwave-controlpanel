@@ -20,7 +20,7 @@ angular.module('DashboardController', [])
                 angular.forEach(devices, function(value, key){
                     if(value != null && value.nodeid != ""){
                         if(angular.isUndefined($scope.zwaveDevices[value.nodeid])===true && value.nodeid != '1'  && value.nodeid != ''){
-                            $scope.zwaveDevices.push(value);
+                            $scope.zwaveDevices[value.nodeid] = value;
                         }
                     }
                 });

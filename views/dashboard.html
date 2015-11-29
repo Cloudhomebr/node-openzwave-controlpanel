@@ -110,7 +110,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="zwaveDevice in zwaveDevices track by $index">
+                        <tr ng-repeat="zwaveDevice in zwaveDevices track by $index" ng-if="zwaveDevice.nodeid != ''">
                             <td data-title="{{'devicesTitle.nodeID' | translate}}">
                                 {{zwaveDevice.nodeid}}
                             </td>
