@@ -4,6 +4,7 @@
  * @author Joao Henrique Bellincanta Gomes <jonnes1@gmail.com>
  */
 var express = require('express');
+var path    = require('path');
 //var socketioJwt = require('socketio-jwt'); //For autenticate sessions
 //var jwt         = require('jsonwebtoken');
 //var jwt_secret  = 'tokenNozwcp$';
@@ -44,8 +45,8 @@ var language = new Localize(require(__dirname + '/languages/messages.json'));
 /**
  * Send Angular SPA file to NOZWCP application
  */
-app.get('*', function (req, res) {
-    res.sendFile(__dirname + '/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname + '/index.html')); // load the single view file (angular will handle the page changes on the front-end)
 });
 
 /**
