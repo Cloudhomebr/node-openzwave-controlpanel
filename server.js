@@ -56,7 +56,7 @@ app.get('/', function(req, res) {
 socketIoServer.sockets.on('connection', function (socket) {
 
     /**
-     * Event for zwave connect
+     * Event to start zwave network
      * @param: USB device
      */
     socket.on('zwaveConnect', function (usbdeviceSelect) {
@@ -64,8 +64,8 @@ socketIoServer.sockets.on('connection', function (socket) {
         if (typeof zwave === 'undefined' || zwave === '') {
             try {
                 zwave = new ZWave({
-                    Logging: true,
-                    ConsoleOutput: true,
+                    Logging: false, // To log errors
+                    ConsoleOutput: false, // To output console log and messages
                     NetworkKey: "0x5f,0xca,0xf4,0xa2,0x3e,0xe3,0xd6,0xb4,0x3e,0xe8,0x04,0x5a,0xf4,0x89,0xa7,0x93"//Change for your security
                 });
                 /*
@@ -74,8 +74,7 @@ socketIoServer.sockets.on('connection', function (socket) {
                  * +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
                  */
                 zwave.on('driver ready', function (homeid) {
-                    homeidZwave = homeid.toString(16);
-                    console.log('scanning homeid=0x%s...', homeid.toString(16));
+                    homeidZwave = '0x'+homeid.toString(16);
                 });
 
                 zwave.on('driver failed', function () {
