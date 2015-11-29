@@ -37,7 +37,9 @@ shell.config.silent = true;
 /**
  * Settings form language
  */
-var language = new Localize(__dirname + '/languages/');
+var language = new Localize(require(__dirname + '/languages/messages.json'));
+//language.setLocale("pt"); Portgues - Brasil
+//language.setLocale("es"); Español
 
 /**
  * Send Angular SPA file to NOZWCP application
@@ -62,7 +64,7 @@ socketIoServer.sockets.on('connection', function (socket) {
                 zwave = new ZWave({
                     Logging: true,
                     ConsoleOutput: true,
-                    NetworkKey: "0x5f,0xca,0xf4,0xa2,0x3e,0xe3,0xd6,0xb4,0x3e,0xe8,0x04,0x5a,0xf4,0x89,0xa7,0x93"
+                    NetworkKey: "0x5f,0xca,0xf4,0xa2,0x3e,0xe3,0xd6,0xb4,0x3e,0xe8,0x04,0x5a,0xf4,0x89,0xa7,0x93"//Change for your security
                 });
                 /*
                  * +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -181,7 +183,7 @@ socketIoServer.sockets.on('connection', function (socket) {
                 });
 
                 zwave.on('scan complete', function () {
-                    console.info(language.translate("ZwaveNetworkStartHomeID") + homeidZwave);
+                    console.log(language.translate("ZwaveNetworkStartHomeID") + homeidZwave);
                     socket.emit('zwaveConected', 'true');
                     socket.emit('zwaveHomeIdInfo', homeidZwave);
                 });

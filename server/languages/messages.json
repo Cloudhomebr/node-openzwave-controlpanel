@@ -1,10 +1,8 @@
 {
-    "ZwaveNetworkStartHomeID": {
-        "en": "Zwave network start with HomeID: ",
-        "ptbr": "Rede zwave iniciada com HomeID: "
+    "Zwave network start with HomeID: ": {
+        "pt": "Rede zwave iniciada com HomeID: "
     },
-    "zwaveConnectError":{
-        "en": "Error on start zwave network",
-        "ptbr": "Houve um erro ao tentar iniciar a rede zwave"
+    "Error on start zwave network":{
+        "pt": "Houve um erro ao tentar iniciar a rede zwave"
     }
 }
