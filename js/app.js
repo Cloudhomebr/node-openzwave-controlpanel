@@ -15,8 +15,7 @@
 
     app.factory('socket', function (socketFactory) {
         return socketFactory({
-            //ioSocket: io.connect(location.host)
-            ioSocket: io.connect('http://192.168.100.51:3000')
+            ioSocket: io.connect(location.host)
         });
     });
 

@@ -19,5 +19,8 @@
         "status": "Status",
         "execute": "Executar",
         "options": "Opções"
+    },
+    "networkMessages":{
+        "start":"Aguardando inicio da rede zwave"
     }
 }

@@ -4,7 +4,7 @@
  * @author Joao Henrique Bellincanta Gomes <jonnes1@gmail.com>
  */
 angular.module('DashboardController', [])
-        .controller('DashboardController', function ($scope, $state, $timeout, blockUI, $translate, socket) {
+        .controller('DashboardController', function ($scope, $state, $timeout, blockUI, $translate, socket, $filter) {
             $scope.usbDevices    = [];
             $scope.zwaveDevices  = [];
             $scope.homeID        = '';
@@ -19,7 +19,6 @@ angular.module('DashboardController', [])
             socket.on('zwaveDevicesList', function(devices){
                 angular.forEach(devices, function(value, key){
                     if(value != null && value.nodeid != ""){
-                        console.log(value);
                         if(angular.isUndefined($scope.zwaveDevices[value.nodeid])===true && value.nodeid != '1'  && value.nodeid != ''){
                             $scope.zwaveDevices.push(value);
                         }
@@ -42,7 +41,7 @@ angular.module('DashboardController', [])
             
             $scope.zwaveConnect = function(){
                 if($scope.usbZwaveDevice !== ''){
-                  blockUI.start(); 
+                  blockUI.start($filter('translate')('networkMessages.start')); 
                   socket.emit('zwaveConnect', $scope.usbZwaveDevice);
                   $timeout(function() {   
                         blockUI.stop(); 
