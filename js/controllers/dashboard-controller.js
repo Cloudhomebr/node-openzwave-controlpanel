@@ -45,7 +45,7 @@ angular.module('DashboardController', [])
                   socket.emit('zwaveConnect', $scope.usbZwaveDevice);
                   $timeout(function() {   
                         blockUI.stop(); 
-                    }, 60000);
+                    }, 160000);
                 } else {
                   alert('Select a device from list');
                 }

@@ -21,6 +21,6 @@
         "options": "Opções"
     },
     "networkMessages":{
-        "start":"Aguardando inicio da rede zwave"
+        "start":"Aguardando inicio da rede zwave, pode levar ate 2 minutos."
     }
 }
