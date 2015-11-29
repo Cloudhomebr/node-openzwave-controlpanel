@@ -15,11 +15,12 @@
 
     app.factory('socket', function (socketFactory) {
         return socketFactory({
-            ioSocket: io.connect('http://localhost:3000')
+            //ioSocket: io.connect(location.host)
+            ioSocket: io.connect('http://192.168.100.51:3000')
         });
     });
 
-// define for requirejs loaded modules
+    // define for requirejs loaded modules
     define('app', [], function () {
         return app;
     });

@@ -11,7 +11,9 @@
         "jsonwebtoken": "latest",
         "body-parser": "latest",
         "ip": "latest",
-        "openzwave-shared": "latest"
+        "openzwave-shared": "latest",
+        "localize": "latest",
+        "shelljs": "latest"
     },
     "author" : {
         "name" : "Joao Henrique Bellincanta Gomes <joao@cloudhome.com.br>",

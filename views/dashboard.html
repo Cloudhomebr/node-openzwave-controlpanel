@@ -18,9 +18,10 @@
                             {{ 'controllerDevice.selectTitle' | translate}}
                         </div>
                         <div class="col-md-8">
-                            <select class="form-control" id="optionNode" name="optionNode">
-                                <option value="tty/cu.serial">Aeonlabs USB</option>
+                            <select class="form-control" ng-options="usbDevice.value as usbDevice.name for usbDevice in usbDevices" ng-model="usbZwaveDevice">
+                                <option value="">--select--</option>
                             </select>
+                            
                         </div>
                     </div>
                     <br/>
@@ -29,7 +30,7 @@
                             
                         </div>
                         <div class="col-md-8">
-                            <button type="button" class="btn btn-primary btn-sm">Iniciar</button>
+                            <button type="button" id="zwaveconnet" name="zwaveconnet" class="btn btn-primary btn-sm" ng-click="zwaveConnect()">Iniciar</button>
                         </div>
                     </div>    
                 </div>
@@ -47,7 +48,7 @@
                         <div class="col-md-8">
                             <div class="input-group">
                                 <span class="input-group-addon glyphicon glyphicon-signal"></span>
-                                <input type="text" class="form-control" placeholder="HomeID" aria-describedby="basic-addon1">
+                                <input type="text" class="form-control" placeholder="HomeID" aria-describedby="basic-addon1" value="{{homeID}}">
                             </div>
                         </div>
                     </div> 
@@ -60,6 +61,28 @@
                 <div class="panel-heading">Backup</div>
                 <div class="panel-body">
                     <p>...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading">Gerenciamento da Rede</div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <select class="form-control" id="networkOption" name="networkOption">
+                                <option value="0">-- select --</option>
+                                <option value="add_node">Add NODE</option>
+                                <option value="remove_node">Remove NODE</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-primary btn-sm">Executar</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -87,28 +110,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td data-title="{{'devicesTitle.nodeID' | translate}}">1</td>
-                            <td data-title="{{'devicesTitle.deviceType' | translate}}">1</td>
-                            <td data-title="{{'devicesTitle.description' | translate}}">1</td>
-                            <td data-title="{{'devicesTitle.name' | translate}}">1</td>
-                            <td data-title="{{'devicesTitle.room' | translate}}">1</td>
-                            <td data-title="{{'devicesTitle.value' | translate}}">1</td>
-                            <td data-title="{{'devicesTitle.lastUpdate' | translate}}">1</td>
-                            <td data-title="{{'devicesTitle.execute' | translate}}">
-                                <switch id="enabled" name="enabled" ng-model="enabled" class="green"></switch>
+                        <tr ng-repeat="zwaveDevice in zwaveDevices track by $index">
+                            <td data-title="{{'devicesTitle.nodeID' | translate}}">
+                                {{zwaveDevice.nodeid}}
                             </td>
-                            <td data-title="{{'devicesTitle.options' | translate}}">
-                                <select class="form-control" id="optionNode" name="optionNode">
-                                    <option value="">--</option>
-                                    <option value="rename">Renomear</option>
-                                    <option value="delete">Remove</option>
-                                </select>
+                            <td data-title="{{'devicesTitle.deviceType' | translate}}">
+                                {{zwaveDevice.type}}
                             </td>
-                        </tr>
-                        <tr>
-                            <td data-title="{{'devicesTitle.nodeID' | translate}}">1</td>
-                            <td data-title="{{'devicesTitle.deviceType' | translate}}">1</td>
                             <td data-title="{{'devicesTitle.description' | translate}}">1</td>
                             <td data-title="{{'devicesTitle.name' | translate}}">1</td>
                             <td data-title="{{'devicesTitle.room' | translate}}">1</td>
