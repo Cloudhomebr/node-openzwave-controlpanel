@@ -29,6 +29,6 @@
     },
     "homepage" : "https://github.com/Cloudhomebr/node-openzwave-controlpanel/blob/master/README.md",
     "scripts" : {
-        "start": "node server/server.js"
+        "start": "node server.js"
     }
 }
