@@ -4,7 +4,7 @@
  * @author Joao Henrique Bellincanta Gomes <jonnes1@gmail.com>
  */
 angular.module('DashboardController', [])
-        .controller('DashboardController', function ($scope, $state, $timeout, blockUI, $translate, socket, $filter, toaster, $confirm) {
+        .controller('DashboardController', function ($scope, $state, $timeout, blockUI, $translate, socket, $filter, toaster) {
             $scope.usbDevices = [];
             $scope.zwaveDevices = [];
             $scope.homeID = '';
