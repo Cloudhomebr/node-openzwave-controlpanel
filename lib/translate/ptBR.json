@@ -20,7 +20,18 @@
         "execute": "Executar",
         "options": "Opções"
     },
+    "networCommands":{
+        "title": "Ferramentas administrativas",
+        "btnExecute": "Executar"
+    },
+    "admCommands":{
+        "title": "Ferramentas administrativas",
+        "btnExecute": "Executar"
+    },
     "networkMessages":{
-        "start":"Aguardando inicio da rede zwave, pode levar ate 2 minutos."
+        "title": "Rede Zwave",
+        "start": "Aguardando inicio da rede zwave, pode levar ate 2 minutos.",
+        "connectSuccess": "Conectado com sucesso a rede zwave",
+        "connectError": "Houve um erro ao conectar na rede z-wave, verifique os logs"
     }
 }

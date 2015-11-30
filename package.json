@@ -13,7 +13,8 @@
         "ip": "latest",
         "openzwave-shared": "latest",
         "localize": "latest",
-        "shelljs": "latest"
+        "shelljs": "latest",
+        "async": "latest"
     },
     "author" : {
         "name" : "Joao Henrique Bellincanta Gomes <joao@cloudhome.com.br>",

@@ -8,6 +8,9 @@
 <div class="container">
     <!-- Example row of columns -->
     <div class="row">
+        <toaster-container></toaster-container>
+    </div>
+    <div class="row">
         <div class="col-md-4">
             <div class="panel panel-default">
                 <!-- Default panel contents -->
@@ -21,13 +24,20 @@
                             <select class="form-control" ng-options="usbDevice.value as usbDevice.name for usbDevice in usbDevices" ng-model="usbZwaveDevice">
                                 <option value="">--select--</option>
                             </select>
-                            
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            Exibir Logs?
+                        </div>
+                        <div class="col-md-8">
+                            <input type="checkbox" value="true" ng-model="showLogs" name="showLogs" id="showLogs"/>
                         </div>
                     </div>
                     <br/>
                     <div class="row">
                         <div class="col-md-4">
-                            
+
                         </div>
                         <div class="col-md-8">
                             <button type="button" id="zwaveconnet" name="zwaveconnet" class="btn btn-primary btn-sm" ng-click="zwaveConnect()">Iniciar</button>
@@ -65,67 +75,89 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row" ng-show="zwaveConnected">
         <div class="col-md-12">
             <div class="panel panel-default">
                 <!-- Default panel contents -->
-                <div class="panel-heading">Gerenciamento da Rede</div>
+                <div class="panel-heading">{{'networCommands.title' | translate}}</div>
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <select class="form-control" id="networkOption" name="networkOption">
+                            <select class="form-control" id="networkOption" name="networkOption" ng-model="networkOption" ng-change="doNetworkCommand()">
                                 <option value="0">-- select --</option>
                                 <option value="add_node">Add NODE</option>
                                 <option value="remove_node">Remove NODE</option>
                             </select>
                         </div>
                         <div class="col-md-6">
-                            <button type="button" class="btn btn-primary btn-sm">Executar</button>
+                            <button type="button" class="btn btn-primary btn-sm" ng-click="doNetworkCommand()">{{ 'networCommands.btnExecute' | translate}}</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row" ng-show="zwaveConnected">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading">{{ 'admCommands.title' | translate}}</div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <select class="form-control" id="admCommand" name="admCommand" ng-model="admCommand">
+                                <option value="0">-- select --</option>
+                                <option value="add_second">ADD Second Controller</option>
+                                <option value="reset">Factory Reset</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-primary btn-sm" ng-click="doAdmCommand()">{{ 'admCommands.btnExecute' | translate}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-show="zwaveConnected">
         <div class="col-md-12">
             <div class="col-md-12">
                 <h3 class="text-center">
-                    {{'devicesTitle.devices' | translate}}
+                    {{'devicesTitle.devices'| translate}}
                 </h3>
             </div>
             <div id="no-more-tables">
                 <table class="col-md-12 table-bordered table-striped table-condensed cf">
                     <thead class="cf">
                         <tr>
-                            <th>{{'devicesTitle.nodeID' | translate}}</th>
-                            <th>{{'devicesTitle.deviceType' | translate}}</th>
-                            <th>{{'devicesTitle.description' | translate}}</th>
-                            <th>{{'devicesTitle.name' | translate}}</th>
-                            <th>{{'devicesTitle.room' | translate}}</th>
-                            <th>{{'devicesTitle.value' | translate}}</th>
-                            <th>{{'devicesTitle.lastUpdate' | translate}}</th>
-                            <th>{{'devicesTitle.execute' | translate}}</th>
-                            <th>{{'devicesTitle.options' | translate}}</th>
+                            <th>{{'devicesTitle.nodeID'| translate}}</th>
+                            <th>{{'devicesTitle.deviceType'| translate}}</th>
+                            <th>{{'devicesTitle.description'| translate}}</th>
+                            <th>{{'devicesTitle.name'| translate}}</th>
+                            <th>{{'devicesTitle.room'| translate}}</th>
+                            <th>{{'devicesTitle.value'| translate}}</th>
+                            <th>{{'devicesTitle.lastUpdate'| translate}}</th>
+                            <th>{{'devicesTitle.execute'| translate}}</th>
+                            <th>{{'devicesTitle.options'| translate}}</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="zwaveDevice in zwaveDevices track by $index" ng-if="zwaveDevice.nodeid != '' && zwaveDevice.nodeid!==undefined">
-                            <td data-title="{{'devicesTitle.nodeID' | translate}}">
+                        <tr ng-repeat="zwaveDevice in zwaveDevices track by $index" ng-if="zwaveDevice.nodeid != '' && zwaveDevice.nodeid !== undefined">
+                            <td data-title="{{'devicesTitle.nodeID'| translate}}">
                                 {{zwaveDevice.nodeid}}
                             </td>
-                            <td data-title="{{'devicesTitle.deviceType' | translate}}">
+                            <td data-title="{{'devicesTitle.deviceType'| translate}}">
                                 {{zwaveDevice.type}}
                             </td>
-                            <td data-title="{{'devicesTitle.description' | translate}}">1</td>
-                            <td data-title="{{'devicesTitle.name' | translate}}">1</td>
-                            <td data-title="{{'devicesTitle.room' | translate}}">1</td>
-                            <td data-title="{{'devicesTitle.value' | translate}}">1</td>
-                            <td data-title="{{'devicesTitle.lastUpdate' | translate}}">1</td>
-                            <td data-title="{{'devicesTitle.execute' | translate}}">
+                            <td data-title="{{'devicesTitle.description'| translate}}">1</td>
+                            <td data-title="{{'devicesTitle.name'| translate}}">1</td>
+                            <td data-title="{{'devicesTitle.room'| translate}}">1</td>
+                            <td data-title="{{'devicesTitle.value'| translate}}">1</td>
+                            <td data-title="{{'devicesTitle.lastUpdate'| translate}}">1</td>
+                            <td data-title="{{'devicesTitle.execute'| translate}}">
                                 <switch id="switch_{{zwaveDevice.nodeid}}" name="switch_{{zwaveDevice.nodeid}}" ng-model="switch_model_[zwaveDevice.nodeid]" on="On" off="Off" class="green"></switch>
                             </td>
-                            <td data-title="{{'devicesTitle.options' | translate}}">
+                            <td data-title="{{'devicesTitle.options'| translate}}">
                                 <select class="form-control" id="optionNode" name="optionNode">
                                     <option value="">--</option>
                                     <option value="rename">Renomear</option>
@@ -139,7 +171,15 @@
 
         </div>
     </div>
+    <div class="row" ng-show="showLogs">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="logs">Logs:</label>
+                <textarea class="form-control" rows="5" id="logs" ng-model="logs"></textarea>
+            </div>
 
+        </div>
+    </div>
 
     <hr>
     <footer>

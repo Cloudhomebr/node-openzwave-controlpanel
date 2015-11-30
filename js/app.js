@@ -11,7 +11,8 @@
         'btford.socket-io',
         'blockUI',
         'pascalprecht.translate',
-        'uiSwitch']);
+        'uiSwitch',
+        'toaster']);
 
     app.factory('socket', function (socketFactory) {
         return socketFactory({
