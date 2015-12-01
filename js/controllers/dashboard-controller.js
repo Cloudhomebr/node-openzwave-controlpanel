@@ -4,7 +4,7 @@
  * @author Joao Henrique Bellincanta Gomes <jonnes1@gmail.com>
  */
 angular.module('DashboardController', [])
-        .controller('DashboardController', function ($scope, $state, $timeout, blockUI, $translate, socket, $filter, toaster, dialogs) {
+        .controller('DashboardController', function ($scope, $state, $timeout, blockUI, $translate, socket, $filter, toaster, dialogs, $dialogs) {
             $scope.usbDevices = [];
             $scope.zwaveDevices = [];
             $scope.homeID = '';
@@ -13,6 +13,20 @@ angular.module('DashboardController', [])
             $scope.zwaveConnected = false;
             $scope.networkOption = '';
             $scope.admCommand = '';
+            
+            var msgbox = $dialog.messageBox('Delete Item', 'Are you sure?', [{label:'Yes, I\'m sure', result: 'yes'},{label:'Nope', result: 'no'}]);
+
+            msgbox.open().then(function(result){
+
+                if(result === 'yes') {
+
+                  //code to delete here
+
+                  console.log("deleting item " + item.name);
+
+                }
+
+            });
             
             //Blockui to get USB controllers devices 
             blockUI.start();
