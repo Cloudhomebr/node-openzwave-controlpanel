@@ -52,14 +52,16 @@ angular.module('DashboardController', [])
                 blockUI.stop();
                 console.log('Zwave connected with success');
                 if (result === 'true') {
+                    if(!$scope.zwaveConnected){
                     $scope.zwaveConnected = true;
-                    toaster.pop({
-                        type: 'success',
-                        title: $filter('translate')('networkMessages.title'),
-                        body: $filter('translate')('networkMessages.connectSuccess'),
-                        showCloseButton: true,
-                        timeOut: "200"
-                    });
+                        toaster.pop({
+                            type: 'success',
+                            title: $filter('translate')('networkMessages.title'),
+                            body: $filter('translate')('networkMessages.connectSuccess'),
+                            showCloseButton: true,
+                            timeOut: "200"
+                        });
+                    }
                     //Send get zwave devices nodes
                     socket.emit('zwaveGetDevices');
                 } else {
@@ -77,6 +79,15 @@ angular.module('DashboardController', [])
              * Socket.io Event after connect receive ZwaveHomeID
              */
             socket.on('zwaveHomeIdInfo', function (homeidZwave) {
+                blockUI.stop();
+                $scope.zwaveConnected = true;
+                toaster.pop({
+                    type: 'success',
+                    title: $filter('translate')('networkMessages.title'),
+                    body: $filter('translate')('networkMessages.connectSuccess'),
+                    showCloseButton: true,
+                    timeOut: "200"
+                });
                 $scope.homeID = homeidZwave;
             });
             
