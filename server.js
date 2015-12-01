@@ -237,7 +237,7 @@ socketIoServer.sockets.on('connection', function (socket) {
                 * Zwave network scan complete and up to send and receive command
                 */
                 zwave.on('scan complete', function () {
-                    console.log(language.translate("ZwaveNetworkStartHomeID") + homeidZwave);
+                    console.log(language.translate("Zwave network start with HomeID: ") + homeidZwave);
                     //Send socket.io event of connect true
                     socket.emit('zwaveConected', 'true');
                     //Send socket.io homeID info
