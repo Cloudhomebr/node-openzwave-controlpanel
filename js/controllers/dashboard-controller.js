@@ -4,7 +4,7 @@
  * @author Joao Henrique Bellincanta Gomes <jonnes1@gmail.com>
  */
 angular.module('DashboardController', [])
-        .controller('DashboardController', function ($scope, $state, $timeout, blockUI, $translate, socket, $filter, toaster, $confirm) {
+        .controller('DashboardController', function ($scope, $state, $timeout, blockUI, $translate, socket, $filter, toaster, dialogs) {
             $scope.usbDevices = [];
             $scope.zwaveDevices = [];
             $scope.homeID = '';
@@ -120,9 +120,11 @@ angular.module('DashboardController', [])
                         case 'add_node':
                             break;
                         case 'remove_node':
-                            $confirm({text: 'Are you sure you want to delete?', ok: 'Yes', no:'Cancel'})
-                                .then(function() {
-                                    alert('yes');
+                            var dlg = dialogs.confirm();
+                                dlg.result.then(function(btn){
+                                    alert('You confirmed "Yes."');
+                                },function(btn){
+                                    alert('You say NO');
                                 });
                             break;
                     }

@@ -12,7 +12,8 @@
         'blockUI',
         'pascalprecht.translate',
         'uiSwitch',
-        'toaster']);
+        'toaster',
+        'dialogs.main']);
 
     app.factory('socket', function (socketFactory) {
         return socketFactory({
