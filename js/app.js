@@ -12,7 +12,8 @@
         'blockUI',
         'pascalprecht.translate',
         'uiSwitch',
-        'toaster']);
+        'toaster',
+        '$confirm']);
 
     app.factory('socket', function (socketFactory) {
         return socketFactory({
