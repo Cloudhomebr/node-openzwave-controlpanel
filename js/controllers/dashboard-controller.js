@@ -4,7 +4,7 @@
  * @author Joao Henrique Bellincanta Gomes <jonnes1@gmail.com>
  */
 angular.module('DashboardController', [])
-        .controller('DashboardController', function ($scope, $state, $timeout, blockUI, $translate, socket, $filter, toaster, $dialogs) {
+        .controller('DashboardController', function ($scope, $state, $timeout, blockUI, $translate, socket, $filter, toaster, SweetAlert) {
             $scope.usbDevices = [];
             $scope.zwaveDevices = [];
             $scope.homeID = '';
@@ -14,19 +14,23 @@ angular.module('DashboardController', [])
             $scope.networkOption = '';
             $scope.admCommand = '';
             
-            var msgbox = $dialog.messageBox('Delete Item', 'Are you sure?', [{label:'Yes, I\'m sure', result: 'yes'},{label:'Nope', result: 'no'}]);
-
-            msgbox.open().then(function(result){
-
-                if(result === 'yes') {
-
-                  //code to delete here
-
-                  console.log("deleting item " + item.name);
-
-                }
-
-            });
+            SweetAlert.swal({   
+			title: "Are you sure?",   
+			text: "Your will not be able to recover this imaginary file!",   
+			type: "warning",   
+			showCancelButton: true,   
+			confirmButtonColor: "#DD6B55",   
+			confirmButtonText: "Yes, delete it!",   
+			cancelButtonText: "No, cancel plx!",   
+			closeOnConfirm: false,   
+			closeOnCancel: false 
+		}, function(isConfirm){  
+			if (isConfirm) {     
+				SweetAlert.swal("Deleted!", "Your imaginary file has been deleted.", "success");   
+			} else {     
+				SweetAlert.swal("Cancelled", "Your imaginary file is safe :)", "error");   
+			} 
+		});
             
             //Blockui to get USB controllers devices 
             blockUI.start();

@@ -12,7 +12,8 @@
         'blockUI',
         'pascalprecht.translate',
         'uiSwitch',
-        'toaster']);
+        'toaster',
+        'oitozero.ngSweetAlert']);
 
     app.factory('socket', function (socketFactory) {
         return socketFactory({
