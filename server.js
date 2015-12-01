@@ -67,8 +67,8 @@ socketIoServer.sockets.on('connection', function (socket) {
         if (typeof zwave === 'undefined' || zwave === '') {
             try {
                 zwave = new ZWave({
-                    Logging: false, // To log errors
-                    ConsoleOutput: false, // To output console log and messages
+                    Logging: true, // To log errors
+                    ConsoleOutput: true, // To output console log and messages
                     NetworkKey: "0x5f,0xca,0xf4,0xa2,0x3e,0xe3,0xd6,0xb4,0x3e,0xe8,0x04,0x5a,0xf4,0x89,0xa7,0x93"//Change for your security
                 });
                 /*

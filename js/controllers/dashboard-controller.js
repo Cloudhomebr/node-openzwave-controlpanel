@@ -50,6 +50,7 @@ angular.module('DashboardController', [])
              */
             socket.on('zwaveConnected', function (result) {
                 blockUI.stop();
+                console.log('Zwave connected with success');
                 if (result === 'true') {
                     $scope.zwaveConnected = true;
                     toaster.pop({
