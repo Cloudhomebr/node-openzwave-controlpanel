@@ -12,9 +12,7 @@
         'blockUI',
         'pascalprecht.translate',
         'uiSwitch',
-        'toaster',
-        'ui.bootstrap.modal',
-        'confirm']);
+        'toaster']);
 
     app.factory('socket', function (socketFactory) {
         return socketFactory({
