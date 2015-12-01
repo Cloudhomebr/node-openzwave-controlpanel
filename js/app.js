@@ -14,7 +14,7 @@
         'uiSwitch',
         'toaster',
         'ui.bootstrap.modal',
-        '$confirm']);
+        'confirm']);
 
     app.factory('socket', function (socketFactory) {
         return socketFactory({
