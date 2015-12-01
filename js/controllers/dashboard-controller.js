@@ -4,7 +4,7 @@
  * @author Joao Henrique Bellincanta Gomes <jonnes1@gmail.com>
  */
 angular.module('DashboardController', [])
-        .controller('DashboardController', function ($scope, $state, $timeout, blockUI, $translate, socket, $filter, toaster) {
+        .controller('DashboardController', function ($scope, $state, $timeout, blockUI, $translate, socket, $filter, toaster, $confirm) {
             $scope.usbDevices = [];
             $scope.zwaveDevices = [];
             $scope.homeID = '';
@@ -53,7 +53,7 @@ angular.module('DashboardController', [])
                 console.log('Zwave connected with success');
                 if (result === 'true') {
                     if(!$scope.zwaveConnected){
-                    $scope.zwaveConnected = true;
+                        $scope.zwaveConnected = true;
                         toaster.pop({
                             type: 'success',
                             title: $filter('translate')('networkMessages.title'),
@@ -107,6 +107,32 @@ angular.module('DashboardController', [])
                     }, 160000);
                 } else {
                     alert('Select a device from list');
+                }
+            };
+            
+            /**
+             * Function to connect on the zwave network
+             */
+            $scope.doNetworkCommand = function () {
+                if ($scope.doNetworkCommand !== '0') {
+                    blockUI.start($filter('translate')('networkMessages.start'));
+                    switch(admCommand){
+                        case 'add_node':
+                            break;
+                        case 'remove_node':
+                            $confirm({text: 'Are you sure you want to delete?', ok: 'Yes', no:'Cancel'})
+                                .then(function() {
+                                    alert('yes');
+                                });
+                            break;
+                    }
+                    socket.emit('zwaveConnect', $scope.usbZwaveDevice);
+                    
+                    $timeout(function () {
+                        blockUI.stop();
+                    }, 160000);
+                } else {
+                    alert('Select a ADM command from list');
                 }
             };
             

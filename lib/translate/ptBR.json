@@ -22,7 +22,8 @@
     },
     "networCommands":{
         "title": "Ferramentas administrativas",
-        "btnExecute": "Executar"
+        "btnExecute": "Executar",
+        "actionAddNode": "Pronto para adicionar node, pressione o botao no device"
     },
     "admCommands":{
         "title": "Ferramentas administrativas",
