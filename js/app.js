@@ -13,7 +13,7 @@
         'pascalprecht.translate',
         'uiSwitch',
         'toaster',
-        $confirm]);
+        '$confirm']);
 
     app.factory('socket', function (socketFactory) {
         return socketFactory({
