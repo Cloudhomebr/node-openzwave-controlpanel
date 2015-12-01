@@ -13,7 +13,7 @@
         'pascalprecht.translate',
         'uiSwitch',
         'toaster',
-        '$modal',
+        'ui.bootstrap.modal',
         '$confirm']);
 
     app.factory('socket', function (socketFactory) {
